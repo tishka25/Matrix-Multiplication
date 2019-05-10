@@ -1,14 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+  <style>
+    input {
+      text-align: right;
+      width: 40px;
+      border-radius: 20px;
+    }
+  </style>
   <title>Matrix Multiplication</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="An interactive matrix multiplication calculator for educational purposes"/>
+  <meta name="description" content="An interactive matrix multiplication calculator for educational purposes" />
   <script type="text/javascript" src="https://unpkg.com/prevent-global-this@1.0.0/index.js"></script>
+  <script>
+    window.onload = function () {
+      var inter = setInterval(function () {
+        fetch("/getUserCount", { mode: 'no-cors' }).then(function (res) {
+          res.json().then((data) => {
+            console.log(data);
+            document.getElementById("currentUserCount").innerHTML = "Currently " + data.count + " people have used the website";
+          })
+        })
+      }, 2000);
+    }
+    function submitGaussianElimination() {
+        var div = document.getElementById("gaussian-elimination");
+        var els = Array.from(div.getElementsByTagName("input"));
+        var values = els.map(x => parseFloat(x.value));
+        console.log(values);
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", '/gauss/' + JSON.stringify(values), true);
+        xhr.send();
+
+        xhr.onload = function (e) {
+            if(xhr.status == 200){
+              console.log(xhr.response);
+              document.getElementById("gaussian-elimination-answer").innerHTML = "Anwser is: " + xhr.response;
+            }
+          }
+        
+      }
+  </script>
 </head>
-<body>
+
+<body style="text-align:center">
   <div id="main-container"></div>
-  <script src="./dist/main.min.js"></script>
+  <div id="gaussian-elimination" style="padding-bottom:50px">
+    <p style="font-size: 18px"> Gaussian elimination </p>
+    <input type="text">&nbsp;x1 + &nbsp;<input type="text">&nbsp;x2&nbsp; + &nbsp;<input type="text">&nbsp;x3&nbsp; = &nbsp;<input type="text"><br><br>
+    <input type="text">&nbsp;x1 + &nbsp;<input type="text">&nbsp;x2&nbsp; + &nbsp;<input type="text">&nbsp;x3&nbsp; = &nbsp;<input type="text"><br><br>
+    <input type="text">&nbsp;x1 + &nbsp;<input type="text">&nbsp;x2&nbsp; + &nbsp;<input type="text">&nbsp;x3&nbsp; = &nbsp;<input type="text"><br><br>
+
+    <button onclick="submitGaussianElimination()">Calculate</button> <br>
+    <p id="gaussian-elimination-answer" style="font-size: 18px"></p>
+  </div>
+  <div style="fill:black; text-align: center">
+    <img src="./elsys.png">
+  </div>
+
+  <script src="./dist/main.js"></script>
+
+  <footer style="padding-top:100px;color: gray">
+    <p>Made with love Pticata <3 </p> <p id="currentUserCount">
+    </p>
+    <p> <a href="https://www.w3schools.com/html/">Fork of matrixmultiplication.xyz</a></p>
+  </footer>
 </body>
+
 </html>

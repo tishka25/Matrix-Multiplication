@@ -1,6 +1,6 @@
 {
   "name": "matrix-multiplication",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "author": "Andre Staltz",
   "license": "MIT",
@@ -8,13 +8,19 @@
     "@cycle/dom": "21.0.0-experimental.4",
     "@cycle/isolate": "3.4",
     "@cycle/run": "4.4",
+    "body-parser": "^1.19.0",
     "cycle-onionify": "6.1",
+    "express": "^4.16.4",
+    "express-ip": "^1.0.3",
+    "gaussian-elimination": "^1.0.2",
     "immutable": "^3.8.1",
+    "multer": "^1.4.1",
+    "save": "^2.3.3",
     "typestyle": "1.0.0",
     "xstream": "11.7"
   },
   "devDependencies": {
-    "browserify": "13.1.1",
+    "browserify": "^16.2.3",
     "mkdirp": "0.5.x",
     "typescript": "2.8.4",
     "uglify-js": "^2.7.4"
@@ -24,5 +30,18 @@
     "browserify": "browserify lib/index.js --outfile dist/main.js",
     "postbrowserify": "uglifyjs dist/main.js -o dist/main.min.js",
     "start": "npm install && npm run browserify && echo 'OPEN index.html IN YOUR BROWSER'"
-  }
+  },
+  "description": "> An interactive matrix multiplication calculator for educational purposes",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staltz/matrixmultiplication.xyz.git"
+  },
+  "keywords": [
+    "matrix"
+  ],
+  "bugs": {
+    "url": "https://github.com/staltz/matrixmultiplication.xyz/issues"
+  },
+  "homepage": "https://github.com/staltz/matrixmultiplication.xyz#readme"
 }

@@ -9,9 +9,9 @@ function view(calculatorVDom) {
         return dom_1.div('.app', [
             dom_1.h1(".title." + styles_1.default.title, 'Matrix Multiplication'),
             calcVNode,
-            dom_1.h2(".footnote." + styles_1.default.footnote, [
-                dom_1.a({ attrs: { href: 'https://github.com/staltz/matrixmultiplication.xyz' } }, 'Built by @andrestaltz with Cycle.js')
-            ])
+            // dom_1.h2(".footnote." + styles_1.default.footnote, [
+            //     dom_1.a({ attrs: { href: 'https://github.com/staltz/matrixmultiplication.xyz' } }, 'Fork of matrixmultiplication.xyz')
+            // ])
         ]);
     });
 }
@@ -607,7 +607,7 @@ var Styles;
         position: 'relative',
         paddingTop: '86px',
         paddingBottom: '40px',
-        backgroundImage: "linear-gradient(to bottom,\n      rgba(255,255,255,0) 0,\n      rgba(255,255,255,0.8) 92px,\n      rgba(255,255,255,0.8) 126px,\n      rgba(255,255,255,0) 100%)\n    ",
+        backgroundImage: "linear-gradient(to bottom,\n      rgba(255,255,128,0) 0,\n      rgba(255,255,255,0.8) 92px,\n      rgba(255,255,255,0.8) 126px,\n      rgba(255,255,255,0) 100%)\n    ",
         zIndex: 2,
         $nest: {
             '& > * + *': {
